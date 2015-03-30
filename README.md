@@ -1,11 +1,11 @@
-# hexo-migrator-ghost
+# hexo-migrator-ghostblog
 
 Ghost migrator for Hexo.
 
 ## Install
 
 ``` bash
-$ npm install hexo-migrator-ghost --save
+$ npm install hexo-migrator-ghostblog --save
 ```
 
 ## Usage
@@ -34,6 +34,8 @@ This plugin will migrate following data from Ghost:
  - tags
  - status(is draft)
  - type(post or page)
+
+Images will NOT be migrated!
 
 In order to successfully migrate `tags`, you have to make sure the front-matter in `./scaffolds/post.md` look like this:
 

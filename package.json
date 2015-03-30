@@ -1,5 +1,5 @@
 {
-  "name": "hexo-migrator-ghost",
+  "name": "hexo-migrator-ghostblog",
   "version": "0.0.1",
   "description": "Ghost migrator for Hexo",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jasonslyvia/hexo-migrator-ghost.git"
+    "url": "https://github.com/jasonslyvia/hexo-migrator-ghostblog.git"
   },
   "keywords": [
     "ghost",
@@ -18,9 +18,9 @@
   "author": "jasonslyvia <jasonslyvia@gmail.com> (http://undefinedblog.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jasonslyvia/hexo-migrator-ghost/issues"
+    "url": "https://github.com/jasonslyvia/hexo-migrator-ghostblog/issues"
   },
-  "homepage": "https://github.com/jasonslyvia/hexo-migrator-ghost",
+  "homepage": "https://github.com/jasonslyvia/hexo-migrator-ghostblog",
   "dependencies": {
     "async": "^0.9.0",
     "lodash": "^3.6.0",
