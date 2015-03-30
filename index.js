@@ -7,6 +7,7 @@
 var _ = require('lodash');
 var async = require('async');
 var fs = require('fs');
+var moment = require('moment');
 
 hexo.extend.migrator.register('ghost', function(args, callback){
   var source = args._.shift();
@@ -22,16 +23,20 @@ hexo.extend.migrator.register('ghost', function(args, callback){
     }
 
     try {
+      data = JSON.parse(data);
       data = data.db[0].data;
+
       var posts = data.posts;
       var postsTags = data.posts_tags;
       var tags = data.tags;
 
+
       // remap all tags
       var tagsObj = {};
       tags.forEach(function(tag){
-        tags[tag.id] = tag;
+        tagsObj[tag.id] = tag;
       });
+
 
       // remap all posts
       var postsObj = {};
@@ -53,15 +58,27 @@ hexo.extend.migrator.register('ghost', function(args, callback){
 
       var postsArr = _.toArray(postsObj);
       async.each(postsArr, function(post, next){
-        hexo.post.create({
+        var isPage = post.page !== 0;
+        log.i('%s found: %s', isPage ? 'Page' : 'Post', post.title);
+
+        var postData = {
           title: post.title,
           permalink: post.slug,
           content: post.markdown,
           id: post.id,
-          tags: post.tags,
           date: post.created_at,
-          updated: post.updated_at
-        }, next);
+          updated: moment(post.updated_at).format('YYYY-MM-DD HH:mm:ss')
+        };
+
+        if (!isPage) {
+          postData.tags = post.tags && ('\n- ' + (post.tags).join('\n- '));
+          postData.layout = post.status === 'published' ? 'post' : 'draft';
+        }
+        else {
+          postData.layout = 'page';
+        }
+
+        hexo.post.create(postData, next);
       }, function(err){
         if (err) {
           handleError(callback, 'Error creating posts in Hexo!');
@@ -72,6 +89,7 @@ hexo.extend.migrator.register('ghost', function(args, callback){
       });
     }
     catch (e) {
+      throw (e);
       handleError(callback, 'Malformed export data!');
     }
   });

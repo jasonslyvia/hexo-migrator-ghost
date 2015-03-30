@@ -22,4 +22,27 @@ Execute the following command after installed. `source` is the file path exporte
 $ hexo migrate ghost <source>
 ```
 
+## Notice
+
+This plugin will migrate following data from Ghost:
+
+ - post title
+ - post content
+ - posd id
+ - create date
+ - update date
+ - tags
+ - status(is draft)
+ - type(post or page)
+
+In order to successfully migrate `tags`, you have to make sure the front-matter in `./scaffolds/post.md` look like this:
+
+```markdown
+title: {{ title }}
+date: {{ date }}
+tags: {{ tags }}
+---
+
+```
+
 [Hexo]: http://zespia.tw/hexo
