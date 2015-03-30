@@ -1,11 +1,11 @@
-# hexo-migrator-ghostblog
+# hexo-migrator-ghost
 
 Ghost migrator for Hexo.
 
 ## Install
 
 ``` bash
-$ npm install hexo-migrator-ghostblog --save
+$ npm install hexo-migrator-ghost --save
 ```
 
 ## Usage
