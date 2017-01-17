@@ -24,7 +24,7 @@ hexo.extend.migrator.register('ghost', function(args, callback){
 
     try {
       data = JSON.parse(data);
-      data = data.db[0].data;
+      data = data.db ? data.db[0].data : data.data;
 
       var posts = data.posts;
       var postsTags = data.posts_tags;
