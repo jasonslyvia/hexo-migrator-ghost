@@ -1,6 +1,6 @@
 {
   "name": "hexo-migrator-ghost",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Ghost migrator for Hexo",
   "main": "index.js",
   "scripts": {
