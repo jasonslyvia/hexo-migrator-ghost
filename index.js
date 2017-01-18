@@ -71,7 +71,7 @@ hexo.extend.migrator.register('ghost', function(args, callback){
         };
 
         if (!isPage) {
-          postData.tags = post.tags && ('\n- ' + (post.tags).join('\n- '));
+          postData.tags = post.tags;
           postData.layout = post.status === 'published' ? 'post' : 'draft';
         }
         else {
