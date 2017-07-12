@@ -59,6 +59,7 @@ hexo.extend.migrator.register('ghost', function(args, callback){
       var postsArr = _.toArray(postsObj);
       async.each(postsArr, function(post, next){
         var isPage = post.page !== 0;
+        var isPublished = (post.status === 'published');
         log.i('%s found: %s', isPage ? 'Page' : 'Post', post.title);
 
         var postData = {
@@ -66,13 +67,13 @@ hexo.extend.migrator.register('ghost', function(args, callback){
           permalink: post.slug,
           content: post.markdown,
           id: post.id,
-          date: post.created_at,
-          updated: moment(post.updated_at).format('YYYY-MM-DD HH:mm:ss')
+          date: isPublished ? post.published_at : post.created_at,
+          updated: post.updated_at
         };
 
         if (!isPage) {
           postData.tags = post.tags && ('\n- ' + (post.tags).join('\n- '));
-          postData.layout = post.status === 'published' ? 'post' : 'draft';
+          postData.layout = isPublished ? 'post' : 'draft';
         }
         else {
           postData.layout = 'page';
