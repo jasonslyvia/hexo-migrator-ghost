@@ -65,7 +65,7 @@ hexo.extend.migrator.register('ghost', function(args, callback){
         var postData = {
           title: post.title,
           permalink: post.slug,
-          content: post.markdown,
+          content: JSON.parse(post.mobiledoc).cards[0][1].markdown,
           id: post.id,
           date: isPublished ? post.published_at : post.created_at,
           updated: post.updated_at
