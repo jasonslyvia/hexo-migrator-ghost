@@ -1,3 +1,8 @@
+## ATTENTION
+
+This project is no longer maintained, and incompatibility issue has been reported for newer version of Hexo, use with your own risk.
+------
+
 # hexo-migrator-ghost
 
 Ghost migrator for Hexo.
